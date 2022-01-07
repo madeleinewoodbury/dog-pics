@@ -6,7 +6,7 @@ const DogContext = createContext();
 export const DogProvider = ({ children }) => {
   const initialState = {
     breeds: [],
-    dogs: [],
+    images: [],
     dog: null,
     loading: false,
   };

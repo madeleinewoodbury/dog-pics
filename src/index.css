@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card-actions:last-child {
+  margin-top: 0.5rem;
+}

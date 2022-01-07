@@ -6,6 +6,12 @@ const dogReducer = (state, action) => {
         breeds: action.payload,
         loading: false,
       };
+    case 'GET_IMAGES':
+      return {
+        ...state,
+        images: action.payload,
+        loading: false,
+      };
     case 'SET_LOADING':
       return {
         ...state,

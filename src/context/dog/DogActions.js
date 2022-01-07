@@ -30,3 +30,16 @@ export const searchBreeds = async (search) => {
     return searchResult;
   }
 };
+
+export const getImages = async (params) => {
+  let url;
+  if (params.subbreed) {
+    url = `/breed/${params.breed}/${params.subbreed}/images`;
+  } else {
+    url = `/breed/${params.breed}/images`;
+  }
+
+  const res = await dog.get(url);
+  const images = Object.entries(res.data.message);
+  return images;
+};
