@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import DogContext from '../../context/dog/DogContext';
+import { searchBreeds } from '../../context/dog/DogActions';
 import { SiDatadog } from 'react-icons/si';
 
 const Navbar = () => {
   const [search, setSearch] = useState('');
+  const { dispatch } = useContext(DogContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Search breed
+    dispatch({ type: 'SET_LOADING' });
+    const data = await searchBreeds(search);
+    dispatch({ type: 'GET_BREEDS', payload: data });
   };
   return (
     <nav className='navbar mb-2 p-3 shadow-lg bg-neutral text-neutral-content rounded-box'>
