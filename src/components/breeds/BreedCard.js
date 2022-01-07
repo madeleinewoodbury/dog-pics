@@ -14,8 +14,10 @@ const BreedCard = ({ breed }) => {
           className='select select-bordered w-full max-w-xs'
         >
           {subBreeds.length === 0 && <option value='0'>No sub breeds</option>}
-          {subBreeds.map((b) => (
-            <option value={b}>{b}</option>
+          {subBreeds.map((b, idx) => (
+            <option key={idx} value={b}>
+              {b}
+            </option>
           ))}
         </select>
         <div className='card-actions'>
