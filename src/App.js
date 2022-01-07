@@ -4,9 +4,9 @@ import Home from './pages/Home';
 const App = () => {
   return (
     <DogProvider>
-      <div className='flex flex-col justify-between'>
+      <div className='container mx-auto mt-3'>
         <Navbar />
-        <main className='container mx-auto'>
+        <main>
           <Home />
         </main>
       </div>
