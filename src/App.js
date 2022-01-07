@@ -1,11 +1,12 @@
 import Navbar from './components/layout/Navbar';
+import Home from './pages/Home';
 const App = () => {
   return (
     <>
-      <Navbar />
-      <main className='container mx-auto'>
-        <h1 className='text-5xl font-bold'>Dogs</h1>
-      </main>
+      <div className='flex flex-col justify-between'>
+        <Navbar />
+        <main className='container mx-auto'>{/* <Home /> */}</main>
+      </div>
     </>
   );
 };
