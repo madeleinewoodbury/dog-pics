@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import DogContext from '../context/dog/DogContext';
 import { searchBreeds } from '../context/dog/DogActions';
@@ -7,10 +7,6 @@ import { SiDatadog } from 'react-icons/si';
 const Navbar = () => {
   const [search, setSearch] = useState('');
   const { dispatch, searchAvailable, current } = useContext(DogContext);
-
-  // useEffect(() => {
-  //   // stuff
-  // }, [current]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

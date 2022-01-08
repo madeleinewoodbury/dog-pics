@@ -1,9 +1,13 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import DogContext from '../context/dog/DogContext';
 import { getImages } from '../context/dog/DogActions';
+import Carousel from '../components/Carousel';
+import Gallery from '../components/Gallery';
 
 const Dogs = () => {
+  const [index, setIndex] = useState(0);
+  const [carousel, setCarousel] = useState(false);
   const { images, dispatch, loading } = useContext(DogContext);
   const params = useParams();
 
@@ -16,20 +20,48 @@ const Dogs = () => {
     fetchImages();
   }, [dispatch, params]);
 
+  const handleClick = (idx) => {
+    setIndex(idx);
+    setCarousel(!carousel);
+  };
+
+  const handleNext = () => {
+    if (index !== images.length - 1) {
+      setIndex(index + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (index !== 0) {
+      setIndex(index - 1);
+    }
+  };
+
   return loading ? (
     <h1>Loading...</h1>
   ) : (
-    <div className='grid grid-cols-1 gap-8 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 mb-4'>
-      {images.map((image, idx) => (
-        <div key={idx} className='custom-card-image'>
-          <div className='rounded-lg card image-full'>
-            <figure>
-              <img src={image} />
-            </figure>
+    <>
+      {carousel ? (
+        <>
+          <Carousel
+            images={images}
+            index={index}
+            handleNext={handleNext}
+            handlePrev={handlePrev}
+          />
+          <div className='flex justify-center my-4'>
+            <button
+              onClick={(e) => handleClick(0)}
+              className='btn btn-secondary'
+            >
+              Back to Gallery
+            </button>
           </div>
-        </div>
-      ))}
-    </div>
+        </>
+      ) : (
+        <Gallery images={images} handleClick={handleClick} />
+      )}
+    </>
   );
 };
 
