@@ -7,7 +7,8 @@ export const DogProvider = ({ children }) => {
   const initialState = {
     breeds: [],
     images: [],
-    dog: null,
+    searchAvailable: true,
+    current: null,
     loading: false,
   };
 

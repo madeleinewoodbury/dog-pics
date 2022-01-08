@@ -2,7 +2,6 @@ import { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import DogContext from '../context/dog/DogContext';
 import { getImages } from '../context/dog/DogActions';
-import { shuffle } from '../utils/functions';
 
 const Dogs = () => {
   const { images, dispatch, loading } = useContext(DogContext);
@@ -12,7 +11,7 @@ const Dogs = () => {
     dispatch({ type: 'SET_LOADING' });
     const fetchImages = async () => {
       let data = await getImages(params);
-      dispatch({ type: 'GET_IMAGES', payload: shuffle(data) });
+      dispatch({ type: 'GET_IMAGES', payload: data });
     };
     fetchImages();
   }, [dispatch, params]);

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { shuffle, capitalize } from '../../utils/functions';
 
 const dog = axios.create({ baseURL: 'https://dog.ceo/api' });
 
@@ -33,12 +34,20 @@ export const searchBreeds = async (search) => {
 
 export const getImages = async (params) => {
   let url;
+  let current;
   if (params.subbreed) {
     url = `/breed/${params.breed}/${params.subbreed}/images`;
+    current = `${capitalize(params.subbreed)} ${capitalize(params.breed)}`;
   } else {
     url = `/breed/${params.breed}/images`;
+    current = capitalize(params.breed);
   }
 
   const res = await dog.get(url);
-  return res.data.message;
+  const data = {
+    images: shuffle(res.data.message),
+    current,
+  };
+
+  return data;
 };
