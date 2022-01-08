@@ -40,6 +40,5 @@ export const getImages = async (params) => {
   }
 
   const res = await dog.get(url);
-  const images = Object.entries(res.data.message);
-  return images;
+  return res.data.message;
 };

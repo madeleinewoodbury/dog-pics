@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { capitalize } from '../../utils/capitalize';
+import { capitalize } from '../utils/functions';
 
 const BreedCard = ({ breed }) => {
   const [subBreed, setSubBreed] = useState(breed[1][0]);

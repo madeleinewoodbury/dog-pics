@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react';
-import DogContext from '../../context/dog/DogContext';
-import { getBreeds } from '../../context/dog/DogActions';
-import BreedCard from './BreedCard';
+import DogContext from '../context/dog/DogContext';
+import { getBreeds } from '../context/dog/DogActions';
+import BreedCard from '../components/BreedCard';
 
 const Breeds = () => {
   const { breeds, loading, dispatch } = useContext(DogContext);

@@ -1,6 +1,7 @@
 import { useState, useContext } from 'react';
-import DogContext from '../../context/dog/DogContext';
-import { searchBreeds } from '../../context/dog/DogActions';
+import { Link } from 'react-router-dom';
+import DogContext from '../context/dog/DogContext';
+import { searchBreeds } from '../context/dog/DogActions';
 import { SiDatadog } from 'react-icons/si';
 
 const Navbar = () => {
@@ -16,9 +17,9 @@ const Navbar = () => {
   return (
     <nav className='navbar mb-2 p-3 shadow-lg bg-neutral text-neutral-content rounded-box'>
       <div className='px-2 mx-2 navbar-start'>
-        <span className='text-xl font-bold'>
+        <Link to='/' className='text-xl font-bold'>
           <SiDatadog className='inline pr-2 text-5xl' /> Dog Pics
-        </span>
+        </Link>
       </div>
       <form onSubmit={handleSubmit} className='form navbar-end px-2'>
         <div className='form-control'>
